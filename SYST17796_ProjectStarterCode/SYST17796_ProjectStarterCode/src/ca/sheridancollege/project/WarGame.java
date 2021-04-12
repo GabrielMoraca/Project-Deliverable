@@ -5,13 +5,13 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.Scanner;
+
 public class WarGame {
     
     public static void main(String[]args){
-        Scanner input = new Scanner (System.in);
-        System.out.println("Enter Player one Name/ID");
         
+        CardPile cP = new CardPile ();
+        Game game = new Game (cP.fillDeck());
         
     }
     

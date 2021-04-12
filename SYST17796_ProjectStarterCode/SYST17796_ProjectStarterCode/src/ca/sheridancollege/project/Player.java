@@ -9,7 +9,7 @@ package ca.sheridancollege.project;
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  * @author dancye
  */
-public abstract class Player 
+public  class Player 
 {
     private String playerID; //the unique ID for this player
     
@@ -19,7 +19,7 @@ public abstract class Player
      */
     public Player(String name)
     {
-        playerID= name;
+        this.playerID= name;
     }
     
     /**
@@ -27,7 +27,7 @@ public abstract class Player
      */
     public String getPlayerID() 
     {
-        return playerID;
+        return this.playerID;
     }
 
     /**
@@ -36,13 +36,9 @@ public abstract class Player
      */
     public void setPlayerID(String givenID) 
     {
-        playerID = givenID;
+        this.playerID = givenID;
     }
     
-    /**
-     * The method to be instantiated when you subclass the Player class
-     * with your specific type of Player and filled in with logic to play your game.
-     */
-    public abstract void play();
+   
     
 }

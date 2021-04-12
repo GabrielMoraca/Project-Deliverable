@@ -6,58 +6,48 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * The class that models your game. You should create a more specific
  * child of this class and instantiate the methods given.
  * @author dancye
  */
-public abstract class Game 
-{
-    private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
-    
-    public Game(String givenName)
-    {
-        gameName = givenName;
-        players = new ArrayList();
+public class Game {
+    public Game (ArrayList<Card> deck){
+        play(deck);
     }
-
-    /**
-     * @return the gameName
-     */
-    public String getGameName() 
-    {
-        return gameName;
-    }
-    
-     /**
-     * @return the players of this game
-     */
-    public ArrayList <Player> getPlayers() 
-    {
-        return players;
-    }
-
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList <Player> players) 
-    {
-        this.players = players;
-    }
-    
     /**
      * Play the game. This might be one method or many method calls depending
      * on your game.
      */
-    public abstract void play();
     
-    /**
-     * When the game is over, use this method to declare and display a winning
-     * player.
-     */
-    public abstract void declareWinner();
+    public void play(ArrayList<Card> deck){
+        boolean inGame = true;
+        
+        LinkedList<Card> p1deck = new LinkedList<Card>();
+        p1deck.addAll(deck.subList(0,25));
+        LinkedList<Card> p2deck = new LinkedList<Card>();
+        p2deck.addAll(deck.subList(26, deck.size()));
+        
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter Player one's name");
+        Player p1 = new Player (input.nextLine());
+        System.out.println("Enter Player two's name");
+        Player p2 = new Player (input.nextLine());
+        while (inGame){
+            Card p1Card = p1deck.pop();
+            Card p2Card = p2deck.pop();
+            
+            System.out.println(p1.getPlayerID()+" "+p1Card.toString());
+            System.out.println(p2.getPlayerID()+" "+p2Card.toString());
+        }
+    }
+    
+    
+    
 
    
     
