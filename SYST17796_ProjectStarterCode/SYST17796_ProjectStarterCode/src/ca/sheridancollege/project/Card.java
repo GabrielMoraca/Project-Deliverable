@@ -11,7 +11,7 @@ package ca.sheridancollege.project;
  * should remember to add themselves as a modifier.
  * @author dancye
  */
-public abstract class Card 
+public class Card 
 {
     //default modifier for child classes
     
@@ -19,8 +19,65 @@ public abstract class Card
      * Students should implement this method for their specific children classes 
      * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
      */
+	protected Value value;
+        protected Suit suit;
+        
+        Card(Suit suit, Value value) {
+            this.value = value;
+            this.suit = suit;
+        }
+
+	public Value getValue() {
+		return this.value;
+	}
+
+	/**
+	 * 
+	 * @param value
+	 */
+	public void setValue(Value value) {
+		this.value = value;
+	}
+
+	public Suit getSuit() {
+		return this.suit;
+	}
+
+	/**
+	 * 
+	 * @param suit
+	 */
+	public void setSuit(Suit suit) {
+		this.suit = suit;
+	}
+
+
+	public enum Suit {
+		HEARTS,
+		CLUBS,
+		SPADES,
+		DIAMONDS
+	}
+
+
+	public enum Value {
+		ACE,
+		TWO,
+		THREE,
+		FOUR,
+		FIVE,
+		SIX,
+		SEVEN,
+		EIGHT,
+		NINE,
+		TEN,
+		JACK,
+		QUEEN,
+		KING
+	}
     
     @Override
-    public abstract String toString();
-    
+    public String toString(){
+            return (this.getValue()+ " of "+this.getSuit()+"\n");
+        }
 }
