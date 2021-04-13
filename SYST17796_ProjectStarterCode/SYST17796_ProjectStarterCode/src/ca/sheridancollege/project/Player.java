@@ -16,7 +16,12 @@ public  class Player
      */
     public Player(String name)
     {
-        this.playerID= name;
+        if (name == ""||name == null)
+            throw new IllegalArgumentException("Must input a name for the players");
+            
+        else {
+            this.playerID= name;
+        }
     }
     
     /**

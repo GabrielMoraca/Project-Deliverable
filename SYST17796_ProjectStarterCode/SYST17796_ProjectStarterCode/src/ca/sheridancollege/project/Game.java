@@ -38,23 +38,24 @@ public class Game {
             //Displays the card on top
             Card p1Card = p1deck.pop();
             Card p2Card = p2deck.pop();
+            
             //Show the player the card that was drawn
             System.out.println(p1.getPlayerID()+" "+p1Card.toString());
             System.out.println(p2.getPlayerID()+" "+p2Card.toString());
             
             //Using compareTo to determine which card drawn is greater
-            int val = p1Card.value.compareTo(p2Card.value);
+            //int val = p1Card.value.compareTo(p2Card.value);
             
             /*
             If a player wins they recieve the losing card of the other player 
             with a message displaying that they won the round
             */
-            if(val > 0){
+            if(compareCard(p1Card,p2Card) > 0){
                 System.out.println(p1.getPlayerID()+" wins ");
                 p1deck.addLast(p2Card);
                 p1deck.addLast(p1Card);
             }
-            if(val < 0){
+            if(compareCard(p1Card,p2Card) < 0){
                 System.out.println(p2.getPlayerID()+" wins ");
                 p2deck.addLast(p2Card);
                 p2deck.addLast(p1Card);
@@ -98,13 +99,29 @@ public class Game {
             below displays a winning message for the player that has won the 
             game. 
             */
-            if (p1deck.size() == 0){
+            if (checkP1Hand(p1deck) == 0){
                 System.out.println(p1.getPlayerID()+" wins the GAME! Congrats!!");
                 inGame = false;
-            }else if (p2deck.size() == 0){
+            }else if (checkP2Hand(p2deck) == 0){
                 System.out.println(p2.getPlayerID()+" wins the GAME! Congrats!!");
                 inGame = false;
             }
         }
     }
+    
+    public int compareCard(Card p1Card, Card p2Card){
+        int val = p1Card.value.compareTo(p2Card.value);
+        return val;
+    }
+    
+    public int checkP1Hand(LinkedList<Card> p1deck){
+        int size = p1deck.size();
+        return size;
+    }
+    
+    public int checkP2Hand(LinkedList<Card> p2deck){
+        int size = p2deck.size();
+        return size;
+    }
+    
 }//end class
