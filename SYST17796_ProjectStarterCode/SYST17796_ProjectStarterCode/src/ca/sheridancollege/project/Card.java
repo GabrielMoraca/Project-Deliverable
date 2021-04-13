@@ -1,57 +1,58 @@
-/**
- * SYST 17796 Project Winter 2021 Base code.
- * Students can modify and extend to implement their game.
- * Add your name as a modifier and the date!
- */
 package ca.sheridancollege.project;
 
 /**
- * A class to be used as the base Card class for the project. Must be general
- * enough to be instantiated for any Card game. Students wishing to add to the code 
- * should remember to add themselves as a modifier.
+ * A class that handles the creation of the card with a ENUM as the Suit and Value
  * @author dancye
+ * @Modifier Gabriel Moraca
  */
-public class Card 
-{
-    //default modifier for child classes
-    
-    /**
-     * Students should implement this method for their specific children classes 
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
+public class Card {
+        //Declare the suit and Value enum for the card object
 	protected Value value;
         protected Suit suit;
         
+        /**
+         * Card Constructor takes a suit and value
+         * @param suit
+         * @param value 
+         */
         Card(Suit suit, Value value) {
             this.value = value;
             this.suit = suit;
         }
-
+        /**
+         * Returns the value of the card
+         * @return 
+         */
 	public Value getValue() {
 		return this.value;
 	}
 
 	/**
-	 * 
+	 * Sets the value of the card
 	 * @param value
 	 */
 	public void setValue(Value value) {
 		this.value = value;
 	}
-
+        /**
+         * Returns the suit of the card
+         * @return 
+         */
 	public Suit getSuit() {
 		return this.suit;
 	}
 
 	/**
-	 * 
+	 * Sets the suit of the card
 	 * @param suit
 	 */
 	public void setSuit(Suit suit) {
 		this.suit = suit;
 	}
 
-
+        /**
+         * Declare all possible ENUM suits 
+         */
 	public enum Suit {
 		HEARTS,
 		CLUBS,
@@ -59,7 +60,9 @@ public class Card
 		DIAMONDS
 	}
 
-
+        /**
+         * Declare all possible ENUM values
+         */
 	public enum Value {
 		ACE,
 		TWO,
@@ -76,6 +79,9 @@ public class Card
 		KING
 	}
     
+    /*
+        overided toString method to display value and Suit of the card
+        */
     @Override
     public String toString(){
             return (this.getValue()+ " of "+this.getSuit()+"\n");
